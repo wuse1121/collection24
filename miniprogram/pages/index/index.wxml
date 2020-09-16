@@ -34,6 +34,13 @@
     </navigator>
   </view>
 
+  <!-- 添加食物 -->
+  <view class="uploader">
+    <navigator url="../addFood/addFood" open-type="navigate" class="uploader-text">
+      <text>添加食物</text>
+    </navigator>
+  </view>
+
   <!-- 即时通信 -->
   <view class="uploader">
     <navigator url="../im/im" open-type="navigate" class="uploader-text">

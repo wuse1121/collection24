@@ -1,0 +1,28 @@
+<!--pages/addFood/addFood.wxml-->
+<view>
+  <view class="container">
+    <mp-form id="form" rules="{{rules}}" models="{{formData}}">
+      <mp-cells title="添加食物" footer="底部说明文字底部说明文字">
+        <mp-cell prop="name" title="食物名称" ext-class="">
+          <input bindinput="formInputChange" data-field="name" class="weui-input" placeholder="请输入食物名称" />
+        </mp-cell>
+        <mp-cell prop="weight" title="重量" ext-class="">
+          <input bindinput="formInputChange" data-field="weight" class="weui-input" placeholder="请输入食物重量" />
+        </mp-cell>
+
+        <mp-cell prop="power" title="能量" ext-class="weui-cell_vcode">
+          <view class="weui-cell weui-cell_select">
+            <view class="weui-cell__bd weui-cell__bd_in-select-before">
+              <input bindinput="formInputChange" class="weui-input" placeholder="请输入对应重量食物的能量" />
+            </view>
+            <view class="weui-cell__hd" style="width: 105px">
+              <picker bindchange="selectorChange" value="{{formData.unit}}"  range="{{unitOptions}}" range-key="text">
+                <view class="weui-select">{{unitOptions[formData.unit].text}}</view>
+              </picker>
+            </view>
+          </view>
+        </mp-cell>
+      </mp-cells>
+    </mp-form>
+  </view>
+</view>

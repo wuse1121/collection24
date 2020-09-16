@@ -1,0 +1,11 @@
+/* pages/addFood/addFood.wxss */
+.container {
+  padding: 5rpx 5rpx;
+}
+.form-item {
+  padding: 10rpx;
+}
+
+.button {
+  width: 90%;
+}
