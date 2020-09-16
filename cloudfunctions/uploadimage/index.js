@@ -1,6 +1,7 @@
 // 云函数入口文件
 const cloud = require('wx-server-sdk')
 const webp = require('webp-converter');
+const fs = require('fs');
 
 cloud.init()
 
@@ -11,8 +12,13 @@ exports.main = async (event, context) => {
     file,
     fileType
   } = event;
-  console.log(file)
-  const result = await webp.str2webpstr(file,fileType,"-q 80");
+  const base64 = file.replace(/^data:image\/\w+;base64,/, "");
+  const dataBuffer = new Buffer(base64, 'base64');
+  const result = await webp.buffer2webpbuffer(dataBuffer,fileType,"-q 80");
+  const cloudPath = 'my-image/' + 'xxx/'+ Date.now() + '.webp';
   console.log(result)
-  return result
+  return await cloud.uploadFile({
+    cloudPath: cloudPath,
+    fileContent: result,
+  })
 }
